@@ -13,7 +13,7 @@ class Rolodex
     @contacts << contact # adding information to @contact 
   end 
 
-  def update_contact(contact_id, first)
+  def update_contact(contact_id, first) # contact_id
     @contacts.each do |contact|
       if contact.id == contact_id
         puts "setting contact name to #{first}"
@@ -22,5 +22,31 @@ class Rolodex
     end 
   end
 
-                     # @contacts brings [] 
+  def update_contact_last(contact_id, last)
+    @contacts.each do |contact|
+      if contact.id == contact_id
+        puts "setting contact name to #{last}"
+        contact.last_name = last 
+      end
+    end
+  end
+
+  def update_contact_email(contact_id, email)
+    @contacts.each do |contact|
+      if contact.id == contact_id
+        puts "setting contact email to #{email}"
+        contact.email = email 
+      end
+    end
+  end
+
+  def update_contact_note(contact_id, note)
+    @contacts.each do |contact|
+      if contact.id == contact_id
+        puts "setting contact note to #{note}"
+        contact.note = note 
+      end
+    end
+  end
+             # @contacts brings [] 
 end                      # << will add information into [].We can store information inside of [].
