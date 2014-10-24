@@ -1,12 +1,12 @@
-require_relative './contact.rb'
+require_relative './contact.rb' # ここでコネクトさせる。
 require_relative './rolodex.rb'
 
 class CRM
-  attr_reader :name
+  attr_reader :name 
 
   def initialize(name)
     @name = name
-    @rolodex = Rolodex.new
+    @rolodex = Rolodex.new 
   end
 
   def print_main_menu
@@ -17,22 +17,22 @@ class CRM
     puts "[5] Display an attribute"
     puts "[6] Delete a contact"
     puts "[7] Exit"
-    puts "Enter a number:"
+    puts "Enter a number:" # It is able to be displayed because of "put".
   end
 
   def main_menu
-    puts "Welcome to #{@name}"
+    puts "Welcome to #{@name}" # It comes from below crm.main_menu.
 
-    while true
+    while true #repeat because of While
       print_main_menu
       input = gets.chomp.to_i
-      return if input == 7
-      choose_option(input)
+      return if input == 7 #Repeat until we can see 7,input==7 calls retuen, it can make this process stop. 
+      choose_option(input) #The number which was ritten at input will be stored at (input) parameter.
     end
   end
 
-  def choose_option(option)
-    case option
+  def choose_option(option) #Above choose_option(input) bring values to (option).
+    case option             #Inside of parameter (input),(option) already has a number, so the name of parameter is not matter. 
     when 1 then add_contact
     when 2 then modify_contact
     when 3 then display_all_contacts
@@ -45,9 +45,9 @@ class CRM
     end
   end
 
-  def add_contact
-    print "First Name: "
-    first_name = gets.chomp
+  def add_contact # Because of calling 1 
+    print "First Name: " 
+    first_name = gets.chomp # To write a name.
     print "Last Name: "
     last_name = gets.chomp
     print "Email: "
@@ -55,17 +55,16 @@ class CRM
     print "Note: "
     note = gets.chomp
 
-    contact = Contact.new(first_name, last_name, email, note)
-    @rolodex.add_contact(contact)
+    contact = Contact.new(first_name, last_name, email, note) #initialize by using variable contact.
+    @rolodex.add_contact(contact) # is it coresponding with above contact variable ??  
   end
 
-  def display_all_contacts
-    @rolodex.contacts.each do |contact|
+  def display_all_contacts 
+    @rolodex.contacts.each do |contact| #Dispray all information of content.
       puts "#{contact.first_name} #{contact.last_name} <#{contact.email}>"
-    end
+    end 
     puts
   end
-end
 
 crm = CRM.new("Bitmaker Labs CRM")
 crm.main_menu
