@@ -5,8 +5,8 @@ class CRM
   attr_reader :name 
 
   def initialize(name)
-    @name = name
-    @rolodex = Rolodex.new 
+    @name = name 
+    @rolodex = Rolodex.new # @rolodex calls information of Rolodex.new. The information is Rolodex class.
   end
 
   def print_main_menu
@@ -34,7 +34,7 @@ class CRM
   def choose_option(option) #Above choose_option(input) bring values to (option).
     case option             #Inside of parameter (input),(option) already has a number, so the name of parameter is not matter. 
     when 1 then add_contact
-    when 2 then modify_contact
+    when 2 then modify_contact # => to method modify_contact
     when 3 then display_all_contacts
     when 4 then display_contact
     when 5 then display_attribute
@@ -56,15 +56,19 @@ class CRM
     note = gets.chomp
 
     contact = Contact.new(first_name, last_name, email, note) #initialize by using variable contact.
+    #Class Contact was made.
     @rolodex.add_contact(contact) # is it coresponding with above contact variable ??  
   end
 
-  def display_all_contacts 
+  def display_all_contacts # もしも、Id が正しければ。
     @rolodex.contacts.each do |contact| #Dispray all information of content.
       puts "#{contact.first_name} #{contact.last_name} <#{contact.email}>"
     end 
     puts
   end
 
-crm = CRM.new("Bitmaker Labs CRM")
+crm = CRM.new("Bitmaker Labs CRM") # It will execute all processes.
 crm.main_menu
+
+
+end

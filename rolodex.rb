@@ -4,12 +4,12 @@ class Rolodex
   @@index = 1000 # class variable.
 
   def initialize 
-    @contacts = []
+    @contacts = [] #When we put @contact, it brings []. 
   end
 
-  def add_contact(contact) 
+  def add_contact(contact)
     contact.id = @@index  # You can read @@index because at above method uses @@index.
     @@index += 1 
-    @contacts << contact # add information of contact to @contact , for store the information of contact.
-  end
-end
+    @contacts << contact # adding information to @contact 
+  end                    # @contacts brings [] 
+end                      # << will add information into [].We can store information inside of [].
