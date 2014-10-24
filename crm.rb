@@ -62,13 +62,42 @@ class CRM
 
   def display_all_contacts # もしも、Id が正しければ。
     @rolodex.contacts.each do |contact| #Dispray all information of content.
-      puts "#{contact.first_name} #{contact.last_name} <#{contact.email}>"
+      puts "#{contact.id} #{contact.first_name} #{contact.last_name} <#{contact.email}>"
     end 
-    puts
+    puts"please choose one."
   end
+
+  def modify_contact
+    @rolodex.contacts.each do |contact| #Dispray all information of content.
+      puts "#{contact.id} #{contact.first_name} #{contact.last_name} <#{contact.email}>"
+    end
+    puts "please choose information which you want to change."
+
+    id_to_change = gets.chomp.to_i
+    puts "Please choose which attribute you want to change."
+    puts "1 First Name, 2 Last name, 3 Email , 4 Note."
+
+    option = gets.chomp.to_i #convert string input to number.
+    case option             
+    when 1 then
+      puts "Enter the new name."
+      new_name = gets.chomp
+      @rolodex.update_contact(id_to_change,new_name)
+    when 2 then 
+      puts "Enter the new last name."
+      new_last_name = gets.chomp
+
+    when 3 then 
+
+    when 4 then 
+
+    end
+
+
+  end
+end
+
 
 crm = CRM.new("Bitmaker Labs CRM") # It will execute all processes.
 crm.main_menu
 
-
-end
