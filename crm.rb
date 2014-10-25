@@ -10,7 +10,7 @@ class CRM
   end
 
   def print_main_menu
-    puts "[1] Add a contact"
+    puts "[1] Add a contact" 
     puts "[2] Modify a contact"
     puts "[3] Display all contacts"
     puts "[4] Display one contact"
@@ -36,9 +36,9 @@ class CRM
     when 1 then add_contact
     when 2 then modify_contact # => to method modify_contact
     when 3 then display_all_contacts
-    when 4 then display_contact
-    when 5 then display_attribute
-    when 6 then delete_contact
+    when 4 then display_contact #Idからどのコンタクトを表示させたいのか選ぶ？　does it mean choosing contact from ID ?
+    when 5 then display_attribute # Does it mean just desplaying all last name or all first name or....
+    when 6 then delete_contact 
     else
       puts "Invalid option. Try again!"
       return
@@ -67,10 +67,10 @@ class CRM
   end
 
   def modify_contact
-    display_all_contacts
+    display_all_contacts #これで、上のメソッドを使用可能。
 
     puts "please choose information which you want to change."
-    id_to_change = gets.chomp.to_i
+    id_to_change = gets.chomp.to_i 
 
     puts "Please choose which attribute you want to change."
     puts "1 First Name, 2 Last name, 3 Email , 4 Note."
@@ -99,8 +99,14 @@ class CRM
       @rolodex.update_contact_note(id_to_change,new_note)
     end
   end
-end
 
+  def display_contact 
+    puts "please type your ID."
+    id_to_display = gets.chomp.to_i
+    @rolodex.display_contact(id_to_display)
+  end
+
+end
 
 crm = CRM.new("Bitmaker Labs CRM") # It will execute all processes.
 crm.main_menu

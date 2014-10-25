@@ -48,5 +48,18 @@ class Rolodex
       end
     end
   end
+
+
+  def display_contact(id_to_display)
+    @contacts.each do |contact|
+      if contact.id == id_to_display
+         puts "This is your contact: {#{contact.first_name} #{contact.last_name} <#{contact.email}>,#{contact.note}!"
+
+       end
+     end
+
+  end
+
+
              # @contacts brings [] 
 end                      # << will add information into [].We can store information inside of [].
