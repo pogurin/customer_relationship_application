@@ -69,7 +69,7 @@ class CRM
   def modify_contact
     display_all_contacts #これで、上のメソッドを使用可能。
 
-    puts "please choose information which you want to change."
+    puts "please choose ID which you want to change."
     id_to_change = gets.chomp.to_i 
 
     puts "Please choose which attribute you want to change."
@@ -150,4 +150,3 @@ end
 
 crm = CRM.new("Bitmaker Labs CRM") # It will execute all processes.
 crm.main_menu
-

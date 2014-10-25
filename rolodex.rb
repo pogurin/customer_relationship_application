@@ -62,8 +62,8 @@ class Rolodex
   def delete_contact(contact_id)
     @contacts.each do |contact|
     if contact.id == contact_id
-    puts "Your contents was deleted." 
-    contacts.clear 
+    puts "Your contents has been deleted." 
+    contacts.delete(contact) #これがキーだった。contactsという配列から、contactが消える。
 
     end 
   end
