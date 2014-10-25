@@ -53,13 +53,20 @@ class Rolodex
   def display_contact(id_to_display)
     @contacts.each do |contact|
       if contact.id == id_to_display
-         puts "This is your contact: {#{contact.first_name} #{contact.last_name} <#{contact.email}>,#{contact.note}!"
+       puts "This is your contact: {#{contact.first_name} #{contact.last_name} <#{contact.email}>,#{contact.note}!"
 
-       end
      end
+   end
+ end
 
+  def delete_contact(contact_id)
+    @contacts.each do |contact|
+    if contact.id == contact_id
+    puts "Your contents was deleted." 
+    contacts.clear 
+
+    end 
   end
+end
 
-
-             # @contacts brings [] 
-end                      # << will add information into [].We can store information inside of [].
+end

@@ -106,7 +106,47 @@ class CRM
     @rolodex.display_contact(id_to_display)
   end
 
+
+  def display_attribute
+
+    puts "Please choose which attribute you want to display."
+    puts "1 First Name, 2 Last name, 3 Email , 4 Note."
+    option_attribute = gets.chomp.to_i
+
+    case option_attribute 
+
+    when 1
+      @rolodex.contacts.each do |contact|
+        puts "#{contact.first_name}"
+      end
+    when 2
+      @rolodex.contacts.each do |contact|
+        puts "#{contact.last_name}"
+      end
+    when 3
+      @rolodex.contacts.each do |contact|
+        puts "#{contact.email}"
+      end
+    when 4
+      @rolodex.contacts.each do |contact|
+        puts "#{contact.note}"
+      end
+    when 5
+      @rolodex.contacts.each do |contact|
+        puts "#{contact.id}"
+      end
+    end
+  end
+
+  def delete_contact
+    print "Enter the ID you wish to delete: "
+    id_delete = gets.chomp.to_i
+    @rolodex.delete_contact(id_delete)
+
+  end
 end
+
+
 
 crm = CRM.new("Bitmaker Labs CRM") # It will execute all processes.
 crm.main_menu
