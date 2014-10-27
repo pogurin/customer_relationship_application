@@ -3,10 +3,17 @@ require_relative './rolodex.rb'
 
 class CRM
   attr_reader :name 
+  #名前の変数を他から読み込めるように編集。
 
   def initialize(name)
-    @name = name 
-    @rolodex = Rolodex.new # @rolodex calls information of Rolodex.new. The information is Rolodex class.
+    @name = name #下から、crm = CRM.new("Bitmaker Labs CRM") が来る。そして、@nameに入る。
+    @rolodex = Rolodex.new #Rodex.newというvariableが、@rodexに含まれた。
+   # @rolodex = メソッドの名前となっていれば
+   # そのメソッドの処理が呼び出せる。
+   # Rolodex クラスを見てみると
+   # @contacts = [] という処理があるので
+   # これが行われる。
+
   end
 
   def print_main_menu
@@ -21,7 +28,7 @@ class CRM
   end
 
   def main_menu
-    puts "Welcome to #{@name}" # It comes from below crm.main_menu.
+    puts "Welcome to #{@name}" # ここでの値は、initializeからの値がやってくる。
 
     while true #repeat because of While
       print_main_menu
@@ -55,9 +62,19 @@ class CRM
     print "Note: "
     note = gets.chomp
 
-    contact = Contact.new(first_name, last_name, email, note) #initialize by using variable contact.
-    #Class Contact was made.
+    contact = Contact.new(first_name, last_name, email, note) 
+    # contact　variable の定義。
+    #ここで、各contactの値を定義している。
+    #上のget.chompから各variableの値をゲットしている。
+
+
+    
+    # this variable belongs to Rolodex class , so it calls any method inside of Rolodex class. 
     @rolodex.add_contact(contact) # is it coresponding with above contact variable ??  
+    #  @rolodex.add_contactこれに、,(contact)variableを代入。
+    #  contactvariableは、59行目で定義されている。 
+    # At this point we do not have to care about contact class coz already information is stored. At parameter
+
   end
 
   def display_all_contacts 
@@ -86,12 +103,16 @@ class CRM
     when 2 then 
       puts "Enter the new last name."
       new_last_name = gets.chomp
+
       @rolodex.update_contact_last(id_to_change,new_last_name) #id_to_change coeresponds to contact_id.
-      
+      # @roledex is an instance variable, instance of Roledex class 
+      # left side of . we have instance . class or variable.
+
     when 3 then 
       puts "Enter the new email."
       new_email = gets.chomp
       @rolodex.update_contact_email(id_to_change,new_email)
+      #new_emailに新しく追加される値が代入される。
 
     when 4 then 
       puts "Enter the new note."
@@ -119,9 +140,12 @@ class CRM
       @rolodex.contacts.each do |contact|
         puts "#{contact.first_name}"
       end
+      
+
     when 2
       @rolodex.contacts.each do |contact|
         puts "#{contact.last_name}"
+      
       end
     when 3
       @rolodex.contacts.each do |contact|
@@ -140,12 +164,11 @@ class CRM
 
   def delete_contact
     print "Enter the ID you wish to delete: "
-    id_delete = gets.chomp.to_i
+    id_delete = gets.chomp.id_to_display
     @rolodex.delete_contact(id_delete)
 
   end
 end
-
 
 
 crm = CRM.new("Bitmaker Labs CRM") # It will execute all processes.

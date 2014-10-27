@@ -3,27 +3,56 @@ class Rolodex
 
   @@index = 1000 # class variable.
 
-  def initialize 
+  def initialize # 引数がない場合、()はいらない。
     @contacts = [] #When we put @contact, it brings []. 
+  # a = 3 
+  # puts a 
+  # => 3 
+
+# [] = (first_name, .....)
+
+  # How does this array store contacts ?? 
   end
 
   def add_contact(contact)
-    contact.id = @@index  # You can read @@index because at above method uses @@index.
-    @@index += 1 
-    @contacts << contact # adding information to @contact 
+    contact.id = @@index  #contact.idに@@indexを代入。
+                          #次の行で、コンタクトが追加される毎に、@@indexに
+                          #数字が足されて行く。
+    @@index += 1
+    @contacts << contact  
+    # @contact にcontactを入れる。
+    # @contactにcontactの内容が入る。
+    # やはりここで情報がarrayに入っている様子。
+    # contact はlocal variavleだが、 attr_reader :contacts
+    # によって、参照可能。
+
   end 
 
   def update_contact(contact_id, first) # contact_id
     @contacts.each do |contact|
-      if contact.id == contact_id
-        puts "setting contact name to #{first}"
+      # @contactsは[]から来ているのか。
+      # もしも、そうならアレイの中身を全て閲覧。
+
+
+      #ここの、@contactsはアレイを示している。
+      if contact.id == contact_id 
+        #crm.rbファイルで、定義された(id_to_change,new_name)が
+        #(contact_id, first)に代入される。
         contact.first_name = first
+        # contact.first_name にfirstが代入される。
+        # contact 
+        puts "setting contact name to #{first}"
+        # ここで、firstの内容をcontact.first_nameに代入している。
+        # firstはcontact.rbファイルにアトラーがあるので、中身がやってくる。
+        # contactファイルの、variableであるfirst_nameがfirstに書き変わる。
       end    
     end 
   end
 
   def update_contact_last(contact_id, last)
     @contacts.each do |contact|
+      # contacts つまり[]arrayの中身をサーチ。
+
       if contact.id == contact_id
         puts "setting contact name to #{last}"
         contact.last_name = last 
@@ -61,12 +90,16 @@ class Rolodex
 
   def delete_contact(contact_id)
     @contacts.each do |contact|
-    if contact.id == contact_id
-    puts "Your contents has been deleted." 
-    contacts.delete(contact) #これがキーだった。contactsという配列から、contactが消える。
+      if contact.id == contact_id
+        puts "Your contents has been deleted." 
+        contacts.delete(contact) #これがキーだった。contactsという配列から、contactが消える。
 
-    end 
+      end 
+    end
   end
-end
+
+  def self.fabio
+    puts 'blah'
+  end
 
 end
