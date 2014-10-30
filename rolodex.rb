@@ -5,6 +5,8 @@ class Rolodex
 
   def initialize # 引数がない場合、()はいらない。
     @contacts = [] #When we put @contact, it brings []. 
+    #initializeしたのは、[]に値を入れるため。
+
   # a = 3 
   # puts a 
   # => 3 
@@ -16,10 +18,19 @@ class Rolodex
 
   def add_contact(contact)
     contact.id = @@index  #contact.idに@@indexを代入。
+    # この時点で、@@indexは、contactの一部になっている。
+    # def "id=" (id) #ここのパラメーターに値がはいるらしい。  
+    #   @id = id
+    # end
+    
+    # This is instance of class Contact. 
+
                           #次の行で、コンタクトが追加される毎に、@@indexに
                           #数字が足されて行く。
     @@index += 1
+
     @contacts << contact  
+    # この時点で、
     # @contact にcontactを入れる。
     # @contactにcontactの内容が入る。
     # やはりここで情報がarrayに入っている様子。
@@ -39,6 +50,7 @@ class Rolodex
         #crm.rbファイルで、定義された(id_to_change,new_name)が
         #(contact_id, first)に代入される。
         contact.first_name = first
+        # イコールを含めると。ライター。
         # contact.first_name にfirstが代入される。
         # contact 
         puts "setting contact name to #{first}"
